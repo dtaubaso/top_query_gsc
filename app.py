@@ -85,7 +85,7 @@ def load_config():
             "client_secret": st.secrets['CLIENT_SECRET'],
             "auth_uri": "https://accounts.google.com/o/oauth2/auth",
             "token_uri": "https://accounts.google.com/o/oauth2/token",
-            "redirect_uris": ["http://localhost:8501"],
+            "redirect_uris": st.secrets['REDIRECT_URIS'],
         }
     }
     return client_config
