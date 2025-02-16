@@ -35,7 +35,7 @@ def setup_streamlit():
     Configures Streamlit's page settings and displays the app title and markdown information.
     Sets the page layout, title, and markdown content with links and app description.
     """
-    st.set_page_config(page_title="⭐ GSC | Top Query")
+    st.set_page_config(page_title="⭐ GSC | Top Query", page_icon=':material/app_registration:')
     st.title("⭐ GSC | Top Query")
     st.write()
     st.write("""Esta app permite reorganizar las queries que apuntan a una misma página
