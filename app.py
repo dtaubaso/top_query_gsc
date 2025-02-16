@@ -12,7 +12,7 @@ import gscwrapper, logging
 
 DATE_RANGE_OPTIONS = [
     'Últimos 7 días',
-    'Últimos 30  días',
+    'Últimos 30 días',
     'Últimos 3 meses',
     'Últimos 6 meses',
     'Últimos 12 meses',
