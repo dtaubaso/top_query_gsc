@@ -1,3 +1,4 @@
-pandas==2.2.3
-searchconsole==0.0.4
+google-api-python-client==2.161.0
+gscwrapper @ git+https://github.com/antoineeripret/gsc_wrapper@17186d74169c14f98e049df9e9746ca0b4d6d029
+pandas==2.2.0
 streamlit==1.42.0

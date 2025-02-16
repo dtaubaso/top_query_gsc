@@ -4,7 +4,7 @@ from googleapiclient.discovery import build
 import datetime, time
 import pandas as pd
 import base64, re, traceback
-import searchconsole, logging
+import gscwrapper, logging
 
 # -------------
 # Constants
@@ -126,7 +126,7 @@ def auth_search_console(client_config, credentials):
         "scopes": credentials.scopes,
         "id_token": getattr(credentials, "id_token", None),
     }
-    return searchconsole.authenticate(client_config=client_config, credentials=token)
+    return gscwrapper.generate_auth(client_config=client_config, credentials=token)
 
 
 # -------------
@@ -152,12 +152,12 @@ def fetch_query_page(webproperty, start_date, end_date, selected_device=None):
     start_date = start_date.strftime("%Y-%m-%d") 
     end_date = end_date.strftime("%Y-%m-%d") 
     try:
-        query = webproperty.query.range(start_date, end_date).dimension("query","page")
+        query = webproperty.query.range(start_date, end_date).dimensions(["query","page"])
 
         if selected_device and selected_device != 'Todos':
             query = query.filter('device', selected_device.lower(), 'equals')
         
-        df = query.limit(MAX_ROWS).get().to_dataframe()
+        df = (query.limit(MAX_ROWS).get()).df
     
         if df.empty:
             raise Exception("No hay Dataframe. Revise sus datos.")
