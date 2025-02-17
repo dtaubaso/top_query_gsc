@@ -346,16 +346,16 @@ def show_fetch_data_button(webproperty, start_date, end_date, metrics, selected_
     report = None
 
     if st.button("Obtener Top Query"):
+        status = st.empty()
+        status.text("Procesando datos...")
 
-        with st.status("Procesando datos...") as status:
-    
-            report = get_top_query(webproperty, start_date, end_date, metrics, selected_device, brand_term, zero_clicks)
+        report = get_top_query(webproperty, start_date, end_date, metrics, selected_device, brand_term, zero_clicks)
 
-            if report is not None:
-                show_dataframe(report)
-                status.update(label="Generando CSV...", state="running")
-                download_csv(report, webproperty)
-                status.update(label="Proceso completado", state="complete")
+        if report is not None:
+            show_dataframe(report)  # Puede tener un st.expander() sin problema
+            status.text("Generando CSV...")
+            download_csv(report, webproperty)
+            status.text("Proceso completado ✅")
 
 
 # -------------
