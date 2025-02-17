@@ -346,13 +346,16 @@ def show_fetch_data_button(webproperty, start_date, end_date, metrics, selected_
     report = None
 
     if st.button("Obtener Top Query"):
-        
-        with st.spinner("Cargando..."):
+
+        with st.status("Procesando datos...", expanded=True) as status:
+    
             report = get_top_query(webproperty, start_date, end_date, metrics, selected_device, brand_term, zero_clicks)
 
-        if report is not None:
-            show_dataframe(report)
-            download_csv(report, webproperty)
+            if report is not None:
+                show_dataframe(report)
+                status.update(label="Generando CSV...", state="running")
+                download_csv(report, webproperty)
+                status.update(label="Proceso completado", state="complete")
 
 
 # -------------
