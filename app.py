@@ -347,7 +347,7 @@ def show_fetch_data_button(webproperty, start_date, end_date, metrics, selected_
 
     if st.button("Obtener Top Query"):
 
-        with st.status("Procesando datos...", expanded=True) as status:
+        with st.status("Procesando datos...") as status:
     
             report = get_top_query(webproperty, start_date, end_date, metrics, selected_device, brand_term, zero_clicks)
 
