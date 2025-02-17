@@ -347,9 +347,8 @@ def show_fetch_data_button(webproperty, start_date, end_date, metrics, selected_
 
     if st.button("Obtener Top Query"):
         status = st.empty()
-        status.text("Procesando datos...")
-
-        report = get_top_query(webproperty, start_date, end_date, metrics, selected_device, brand_term, zero_clicks)
+        with st.spinner("Procesando datos..."):  # Spinner real mientras se ejecuta la función
+            report = get_top_query(webproperty, start_date, end_date, metrics, selected_device, brand_term, zero_clicks)
 
         if report is not None:
             show_dataframe(report)  # Puede tener un st.expander() sin problema
