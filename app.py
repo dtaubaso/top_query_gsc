@@ -353,7 +353,7 @@ def show_fetch_data_button(webproperty, start_date, end_date, metrics, selected_
             show_dataframe(report)  # Puede tener un st.expander() sin problema
             with st.spinner("Generando CSV..."):
                 download_csv(report, webproperty)
-            st.write()
+            st.write("")
             st.caption("Proceso completado ✅")
 
 
